@@ -29,7 +29,7 @@ function Blockchain (opts) {
   self.blockDb = opts.blockDb ? opts.blockDb : levelup('', { db: memdown })
   self.detailsDb = opts.detailsDb ? opts.detailsDb : levelup('', { db: memdown })
   self.validate = (opts.validate === undefined ? true : opts.validate)
-  self.huchash = self.validate ? new Ichash(self.detailsDb) : null
+  self.irchash = self.validate ? new Ichash(self.detailsDb) : null
   self.meta = null
   self._initDone = false
   self._putSemaphore = semaphore(1)
@@ -194,7 +194,7 @@ Blockchain.prototype._putBlock = function (block, cb, isGenesis) {
   function verifyPOW (next) {
     if (!self.validate) return next()
 
-    self.huchash.verifyPOW(block, function (valid) {
+    self.irchash.verifyPOW(block, function (valid) {
       next(valid ? null : new Error('invalid POW'))
     })
   }
