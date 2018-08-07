@@ -1,17 +1,17 @@
 # SYNOPSIS
-[![NPM Package](https://img.shields.io/npm/v/happyucjs-blockchain.svg?style=flat-square)](https://www.npmjs.org/package/happyucjs-blockchain)
-[![Build Status](https://travis-ci.org/happyucjs/happyucjs-blockchain.svg?branch=master)](https://travis-ci.org/happyucjs/happyucjs-blockchain)
-[![Coverage Status](https://img.shields.io/coveralls/happyucjs/happyucjs-blockchain.svg?style=flat-square)](https://coveralls.io/r/happyucjs/happyucjs-blockchain)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/happyucjs/happyucjs-lib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) or #happyucjs on freenode
+[![NPM Package](https://img.shields.io/npm/v/icjs-blockchain.svg?style=flat-square)](https://www.npmjs.org/package/icjs-blockchain)
+[![Build Status](https://travis-ci.org/icjs/icjs-blockchain.svg?branch=master)](https://travis-ci.org/icjs/icjs-blockchain)
+[![Coverage Status](https://img.shields.io/coveralls/icjs/icjs-blockchain.svg?style=flat-square)](https://coveralls.io/r/icjs/icjs-blockchain)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/icjs/icjs-lib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) or #icjs on freenode
 
 A module to store and interact with blocks.
 
 # INSTALL
-`npm install happyucjs-blockchain`
+`npm install icjs-blockchain`
 
 # API
 
-# happyucjs-blockchain
+# icjs-blockchain
 A module to store and interact with blocks
 
 - [`Blockchain`](#blockchain)
@@ -53,7 +53,7 @@ Adds a block to the blockchain.
 #### `blockchain.getBlock(blockTag, callback)`
 Gets a block by its blockTag.
 - `blockTag`  - the block's hash or number
-- `callback` - the callback. It is given two parameters `err` and the found `block` (an instance of https://github.com/happyucjs/happyucjs-block) if any. 
+- `callback` - the callback. It is given two parameters `err` and the found `block` (an instance of https://github.com/icjs/icjs-block) if any.
 
 --------------------------------------------------------
 

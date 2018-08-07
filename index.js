@@ -12,12 +12,12 @@ const Stoplight = require('flow-stoplight')
 const semaphore = require('semaphore')
 const levelup = require('levelup')
 const memdown = require('memdown')
-const Block = require('happyucjs-block')
-const hucUtil = require('happyucjs-util')
-const Huchash = require('huchashjs')
+const Block = require('icjs-block')
+const ircUtil = require('icjs-util')
+const Ichash = require('ichashjs')
 const Buffer = require('safe-buffer').Buffer
-const BN = hucUtil.BN
-const rlp = hucUtil.rlp
+const BN = ircUtil.BN
+const rlp = ircUtil.rlp
 
 module.exports = Blockchain
 
@@ -29,7 +29,7 @@ function Blockchain (opts) {
   self.blockDb = opts.blockDb ? opts.blockDb : levelup('', { db: memdown })
   self.detailsDb = opts.detailsDb ? opts.detailsDb : levelup('', { db: memdown })
   self.validate = (opts.validate === undefined ? true : opts.validate)
-  self.huchash = self.validate ? new Huchash(self.detailsDb) : null
+  self.huchash = self.validate ? new Ichash(self.detailsDb) : null
   self.meta = null
   self._initDone = false
   self._putSemaphore = semaphore(1)
@@ -209,7 +209,7 @@ Blockchain.prototype._putBlock = function (block, cb, isGenesis) {
       if (!err && parentDetails) {
         next()
       } else {
-        let parentHash = hucUtil.bufferToHex(block.header.parentHash.toString('hex'))
+        let parentHash = ircUtil.bufferToHex(block.header.parentHash.toString('hex'))
         next(new Error(`parent hash not found: ${parentHash}`))
       }
     })
@@ -217,7 +217,7 @@ Blockchain.prototype._putBlock = function (block, cb, isGenesis) {
 
   function rebuildInfo (next) {
     // calculate the total difficulty for this block
-    var totalDifficulty = new BN(ethUtil.bufferToInt(block.header.difficulty))
+    var totalDifficulty = new BN(ircUtil.bufferToInt(block.header.difficulty))
     // add this block as a child to the parent's block details
     if (!isGenesis) {
       totalDifficulty.iadd(new BN(parentDetails.td))
@@ -228,7 +228,7 @@ Blockchain.prototype._putBlock = function (block, cb, isGenesis) {
     var blockDetails = {
       parent: block.header.parentHash.toString('hex'),
       td: totalDifficulty.toString(),
-      number: hucUtil.bufferToInt(block.header.number),
+      number: ircUtil.bufferToInt(block.header.number),
       child: null,
       staleChildren: [],
       genesis: block.isGenesis()
@@ -257,7 +257,7 @@ Blockchain.prototype._putBlock = function (block, cb, isGenesis) {
     if (block.isGenesis() || totalDifficulty.cmp(self.meta.td) === 1) {
       blockDetails.inChain = true
       self.meta.rawHead = blockHashHexString
-      self.meta.height = hucUtil.bufferToInt(block.header.number)
+      self.meta.height = ircUtil.bufferToInt(block.header.number)
       self.meta.td = totalDifficulty
 
       // blockNumber as decimal string
@@ -361,7 +361,7 @@ Blockchain.prototype.getBlocks = function (blockId, maxBlocks, skip, reverse, cb
         return cb(null, blocks)
       }
 
-      var nextBlockNumber = hucUtil.bufferToInt(block.header.number) + (reverse ? -1 : 1)
+      var nextBlockNumber = ircUtil.bufferToInt(block.header.number) + (reverse ? -1 : 1)
 
       if (i !== 0 && skip && i % (skip + 1) !== 0) {
         return nextBlock(nextBlockNumber)

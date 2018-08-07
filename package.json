@@ -1,6 +1,6 @@
 {
-  "name": "happyucjs-blockchain",
-  "version": "2.1.0",
+  "name": "icjs-blockchain",
+  "version": "0.0.1",
   "description": "A module to store and interact with blocks",
   "main": "index.js",
   "scripts": {
@@ -11,26 +11,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/happyucjs/happyucjs-blockchain.git"
+    "url": "git+https://github.com/icjs/icjs-blockchain.git"
   },
   "keywords": [
-    "happyuc",
+    "irchain",
     "blockchain"
   ],
-  "author": "dreamxyp <dreamxyp@gmail.com>",
+  "author": "IrChain Team <contact@irchain.io>",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/happyucjs/happyucjs-blockchain/issues"
+    "url": "https://github.com/icjs/icjs-blockchain/issues"
   },
-  "homepage": "https://github.com/happyucjs/happyucjs-blockchain#readme",
+  "homepage": "https://github.com/icjs/icjs-blockchain#readme",
   "dependencies": {
     "async": "^2.1.2",
-    // "huchashjs": "/Users/dreamxyp/Transcend/happyuc-js/huchashjs/",
-    // "happyucjs-block": "/Users/dreamxyp/Transcend/happyuc-js/block/",
-    // "happyucjs-util": "/Users/dreamxyp/Transcend/happyuc-js/util/",
-    "huchashjs": "https://github.com/happyucjs/huchashjs.git",
-    "happyucjs-block": "https://github.com/happyucjs/happyucjs-block.git",
-     "happyucjs-util": "https://github.com/happyucjs/happyucjs-util.git",
+    "ichashjs": "git+https://github.com/icjs/ichashjs.git",
+    "icjs-block": "git+https://github.com/icjs/icjs-block.git",
+    "icjs-util": "^0.0.1",
     "flow-stoplight": "^1.0.0",
     "levelup": "^1.3.0",
     "memdown": "^1.1.0",
@@ -40,7 +37,10 @@
   "devDependencies": {
     "coveralls": "^3.0.0",
     "istanbul": "^0.4.2",
-    "standard": "^10.0.0-beta.0",
+    "standard": "^11.0.1",
     "tape": "^4.2.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }

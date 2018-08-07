@@ -2,9 +2,9 @@
 
 const test = require('tape')
 const Blockchain = require('..')
-const Block = require('happyucjs-block')
+const Block = require('icjs-block')
 const async = require('async')
-const hucUtil = require('happyucjs-util')
+const ircUtil = require('icjs-util')
 
 test('blockchain test', function (t) {
   t.plan(30)
@@ -34,7 +34,7 @@ test('blockchain test', function (t) {
     function addBlocks (done) {
       function addNextBlock (blockNumber) {
         var block = new Block()
-        block.header.number = hucUtil.toBuffer(blockNumber)
+        block.header.number = ircUtil.toBuffer(blockNumber)
         block.header.difficulty = '0xfffffff'
         block.header.parentHash = blocks[blockNumber - 1].hash()
         blockchain.putBlock(block, function (err) {
